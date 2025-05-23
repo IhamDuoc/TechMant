@@ -1,6 +1,6 @@
 package com.example.solicitudes.model;
 
-import java.util.Date;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,7 +23,7 @@ public class Solicitud {
     private Long id; // Asegúrate de definir un identificador
     
     @Column(nullable = false)
-    private Date fecha_solicitud; // Fecha de la solicitud
+    private int fecha_solicitud; // Fecha de la solicitud
 
     @Column(nullable = true) // Puede ser nulo
     private String comentario; // Comentarios adicionales
