@@ -23,7 +23,8 @@ public class Solicitud {
     private Long id; // Asegúrate de definir un identificador
     
     @Column(nullable = false)
-    private int fecha_solicitud; // Fecha de la solicitud
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate fecha_solicitud; // Fecha de la solicitud
 
     @Column(nullable = true) // Puede ser nulo
     private String comentario; // Comentarios adicionales
