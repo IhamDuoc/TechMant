@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.solicitudes.model.Solicitud;
 import com.example.solicitudes.services.SolicitudServices;
 @RestController
-@RequestMapping("/api/solicitudes")
+@RequestMapping("/api/v1/solicitudes")
 public class solicitudController {
     @Autowired
     private SolicitudServices solicitudServices;

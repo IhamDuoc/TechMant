@@ -2,6 +2,8 @@ package com.example.solicitudes.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,6 +25,7 @@ public class Solicitud {
     private Long id; // Asegúrate de definir un identificador
     
     @Column(nullable = false)
+    @JsonFormat(pattern = "DD/MM/YYYY")
     private int fecha_solicitud; // Fecha de la solicitud
 
     @Column(nullable = true) // Puede ser nulo
