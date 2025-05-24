@@ -1,6 +1,7 @@
-package com.example.solicitudes.model;
+package com.example.ticket.model;
 
 
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -13,27 +14,23 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Entity
-@Table(name = "Solicitud")
+@Table(name = "ticket")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Solicitud {
+public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Asegúrate de definir un identificador
-    
+    private Long id_ticket;
+
     @Column(nullable = false)
-
-    @JsonFormat(pattern = "DD/MM/YYYY")
-    private int fecha_solicitud; // Fecha de la solicitud
-
- 
-
-    @Column(nullable = true) // Puede ser nulo
-    private String comentario; // Comentarios adicionales
+    @JsonFormat(pattern = "dd/MM/yyyy")
     
+    private LocalDate fecha_ticket;
+
     @Column(nullable = false)
-    private String total; // Total de la solicitud
+    private String descripcion;
 }
