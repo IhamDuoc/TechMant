@@ -20,11 +20,8 @@ public class ResenaServices {
     }
 
     public Resenas findById(Long id) {
-        try {
-            return resenaRepository.findById(id).get();
-        } catch (Exception e) {
-            return null;
-        }
+        if (id == null) return null;
+        return resenaRepository.findById(id).orElse(null);
     }
 
     public Resenas saveResena(Resenas resena) {
