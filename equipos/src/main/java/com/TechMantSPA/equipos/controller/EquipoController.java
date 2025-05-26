@@ -70,4 +70,5 @@ public class EquipoController {
         equipoServices.deleteEquipo(id);
         return ResponseEntity.noContent().build();
     }
+
 }

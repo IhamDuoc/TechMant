@@ -18,6 +18,6 @@ public class Modelo {
     private Long idModelo;
     @Column(name="nombre_modelo")
     private String nombreModelo;
-    @Column(name="id_equipo")
+    @Column(name="id_equipo") // FK Lógica 
     private Long idEquipo;
 }
