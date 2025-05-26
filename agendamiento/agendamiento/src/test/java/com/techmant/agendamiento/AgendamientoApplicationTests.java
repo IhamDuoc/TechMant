@@ -1,10 +1,10 @@
-package com.TechMant.Historial.Solicitudes;
+package com.techmant.agendamiento;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HistorialSolicitudesApplicationTests {
+class AgendamientoApplicationTests {
 
 	@Test
 	void contextLoads() {
