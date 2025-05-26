@@ -14,6 +14,7 @@ public class EquipoServices {
     @Autowired
     private EquiposRepository equiposRepository;
 
+
     // Método para obtener todos los equios
     public List<Equipos> getAllEquipos(){
         return equiposRepository.findAll();
@@ -42,5 +43,6 @@ public class EquipoServices {
     public void deleteEquipo(Long id){
         equiposRepository.deleteById(id);
     }
+
 
 }

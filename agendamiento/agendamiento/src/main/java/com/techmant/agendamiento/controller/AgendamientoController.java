@@ -21,7 +21,7 @@ public class AgendamientoController {
     @Autowired
     private AgendamientoService agendamientoService;
 
-    //Endpoint para obtenr todas las agendas 
+    //Endpoint para obtener todas las agendas 
     @GetMapping
     public ResponseEntity<List<Agendamiento>> listarAgendamiento() {
         List<Agendamiento> agendamientos = agendamientoService.getAgendamientos();
@@ -49,7 +49,7 @@ public class AgendamientoController {
     }//Revisar si es que esta bien xd
 
 
-    //Endpoint para buscar una agneda por su ID 
+    //Endpoint para buscar una agenda por su ID 
     @GetMapping("/{id}")
     public ResponseEntity<Agendamiento> buscarAgendaPorId(@PathVariable Long id) {
         Agendamiento agendamiento = agendamientoService.getAgendamientoById(id);
@@ -73,6 +73,24 @@ public class AgendamientoController {
     }
 
 
-    //Endpoint para obtener una agenda mediente su ID (Si es que se necesita):)
+    //Endpoint para actualizar una agenda mediente su ID (Si es que se necesita):)
+
+    public ResponseEntity <Agendamiento> actualizarAgendamiento(@PathVariable Long id, @RequestBody Agendamiento agenda) {
+        try {
+            //Creamos un objeto para buscar el paciente que queremos modificar
+            Agendamiento agendamiento2 = agendamientoService.getAgendamientoById(id);
+            //si este existe modificamos los datos
+            agendamiento2.setIdAgendamiento(id);
+            agendamiento2.setEstado(agenda.getEstado());
+            agendamiento2.setFechaCita(agenda.getFechaCita());
+            agendamiento2.setObservaciones(agenda.getObservaciones());
+            //actualizar el registro
+            agendamientoService.createAgendamiento(agendamiento2);
+            return ResponseEntity.ok(agendamiento2);
+        }catch (Exception e) {
+            //si la agenda no existe 
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

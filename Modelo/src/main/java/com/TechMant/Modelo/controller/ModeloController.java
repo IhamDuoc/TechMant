@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.TechMant.Modelo.model.Modelo;
 import com.TechMant.Modelo.services.ModeloServices;
+
+
 
 @RestController
 @RequestMapping("/api/v1/modelos")
@@ -78,6 +81,12 @@ public class ModeloController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+
+
+    
+
+    
 
 
 }

@@ -4,16 +4,26 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
 
 import com.TechMant.Modelo.model.Modelo;
 import com.TechMant.Modelo.repository.ModeloRepository;
 
+
+
 @Service
+@Transactional
 public class ModeloServices {
 
     @Autowired
     private ModeloRepository modeloRepository;
+
+    
+
 
     // Método para obtener todos los modelos
     public List<Modelo> getAllModelos(){
@@ -41,4 +51,8 @@ public class ModeloServices {
     public void deleteModelo(Long id){
         modeloRepository.deleteById(id);
     }
+
+
+
+
 }
