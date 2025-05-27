@@ -38,7 +38,7 @@ public class ServicioController {
 
     //Endpoint para buscar un servicio por su id 
     @GetMapping("{/id}")
-    public ResponseEntity<Servicio> obtenerServicioPorId(@PathVariable long id) {
+    public ResponseEntity<Servicio> obtenerServicioPorId(@PathVariable Long id) {
         Servicio servicio = servicioService.obtenerServicioPorId(id);
         if(servicio == null) {
             return ResponseEntity.notFound().build();
