@@ -29,11 +29,9 @@ public class Solicitud {
     @JsonFormat(pattern = "DD/MM/YYYY")
     private int fecha_solicitud; // Fecha de la solicitud
 
- 
-
     @Column(nullable = true) // Puede ser nulo
     private String comentario; // Comentarios adicionales
     
     @Column(nullable = false)
-    private String total; // Total de la solicitud
+    private int total; // Total de la solicitud
 }
