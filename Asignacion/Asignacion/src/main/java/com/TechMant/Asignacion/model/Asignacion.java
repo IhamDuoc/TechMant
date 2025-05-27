@@ -21,10 +21,10 @@ public class Asignacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAsignacion;
 
-    @Column(name = "nombre_asignado") //nombre del tecnico al que fue asignado 
+    @Column(name = "nombre_asignado", nullable = false) //nombre del tecnico al que fue asignado 
     private String nombreAsignado;
 
-    @Column(name = "nombre_caso") //tipo de caso que se le asigno 
+    @Column(name = "nombre_caso", nullable = false) //tipo de caso que se le asigno 
     private String nombreCaso;
 
     
