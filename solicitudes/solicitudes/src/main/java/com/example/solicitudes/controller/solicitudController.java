@@ -21,28 +21,35 @@ public class solicitudController {
     @Autowired
     private SolicitudServices solicitudServices;
 
-    // Crear una nueva solicitud
-    @PostMapping
-    public ResponseEntity<Solicitud> crearSolicitud(@RequestBody Solicitud solicitud) {
-        Solicitud nuevaSolicitud = solicitudServices.crearSolicitud(solicitud);
-        return ResponseEntity.ok(nuevaSolicitud);
-    }
-
-    // Obtener todas las solicitudes
     @GetMapping
-    public ResponseEntity<List<Solicitud>> obtenerTodasLasSolicitudes() {
-        return ResponseEntity.ok(solicitudServices.obtenerTodasSolicitudes());
+    public ResponseEntity<List<Solicitud>> getAllSolicitudes(){
+        List<Solicitud> solicitudes = solicitudServices.getAllSolicitudes();
+        if(solicitudes.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(solicitudes);
     }
 
-    // Obtener una solicitud por ID
+    // ENDPOINT PARA TRAER UNA SOLICITUD POR ID
     @GetMapping("/{id}")
-    public ResponseEntity<Solicitud> obtenerSolicitudPorId(@PathVariable Long id) {
-        Solicitud solicitud = solicitudServices.obtenerSolicitudPorId(id);
-        if (solicitud != null) {
-            return ResponseEntity.ok(solicitud);
-        } else {
+    public ResponseEntity<Solicitud> getSolicitudById(@PathVariable Long id){
+        Solicitud solicitud = solicitudServices.getSolicitudById(id);
+        if(solicitud == null){
             return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.ok(solicitud);
+    }
+
+    @PostMapping
+    public ResponseEntity<Solicitud> createSolicitud(@RequestBody Solicitud solicitud){
+        try {
+            Solicitud solicitudCreada = solicitudServices.createSolicitud(solicitud);
+            return ResponseEntity.ok(solicitudCreada);
+        } catch (Exception e) {
+            // TODO: handle exception
+            return ResponseEntity.badRequest().build();
+        }
+
     }
 
     // Actualizar una solicitud
