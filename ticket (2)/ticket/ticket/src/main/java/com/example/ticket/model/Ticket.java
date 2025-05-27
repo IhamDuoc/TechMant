@@ -28,9 +28,14 @@ public class Ticket {
 
     @Column(nullable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
-    
     private LocalDate fecha_ticket;
 
     @Column(nullable = false)
     private String descripcion;
+
+    @Column(nullable = false)
+    private Long motivo_id;
+
+    @Column(nullable = false)
+    private Long usuarioId; // Relacion con usuario
 }
