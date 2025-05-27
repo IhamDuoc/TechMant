@@ -8,11 +8,11 @@
 		<version>3.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>solicitudes</artifactId>
+	<groupId>com.TechMant</groupId>
+	<artifactId>Servicio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>solicitudes</name>
-	<description>Gestion De Solicitudes</description>
+	<name>Servicio</name>
+	<description>Tipo de servicio que se le da a un equipo</description>
 	<url/>
 	<licenses>
 		<license/>
