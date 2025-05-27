@@ -2,6 +2,8 @@ package com.techmant.agendamiento.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,17 +25,19 @@ public class Agendamiento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAgendamiento;
 
-    @Column(name = "estado")
+    @Column(name = "estado", nullable = false )
     private String estado;
 
-    @Column(name = "fechaCita")
+    //formato de fecha 
+    @Column(name = "fechaCita", nullable = false)
+    @JsonFormat(pattern = "dd/mm/yyyy")
     private Date fechaCita; 
 
-    @Column(name = "observaciones")
+    @Column(name = "observaciones", nullable = false)
     private String observaciones;
 
     //llaves foraneas
-    @Column(name = "equipo_id_equipo")
+    @Column(name = "equipo_id_equipo", nullable = false)
     private Long dispositivoId;
 
 }
