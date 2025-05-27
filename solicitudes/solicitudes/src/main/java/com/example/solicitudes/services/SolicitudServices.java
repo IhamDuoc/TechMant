@@ -13,19 +13,20 @@ public class SolicitudServices {
     @Autowired
     private SolicitudRepository solicitudRepository;
 
-    //Crear una nueva solicitud
-    public Solicitud crearSolicitud(Solicitud solicitud) {
-        return solicitudRepository.save(solicitud);
-    }
-
-    //Obtener todas las solicitudes
-    public List<Solicitud> obtenerTodasSolicitudes() {
+       // Método para traer todas las solicitudes
+    public List<Solicitud> getAllSolicitudes(){
         return solicitudRepository.findAll();
     }
 
-    //Buscar una solicitud por ID
-    public Solicitud obtenerSolicitudPorId(Long id) {
-        return solicitudRepository.findById(id).get();
+    // Método para traer una solicitud por ID
+    public Solicitud getSolicitudById(Long id){
+        return solicitudRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Solicitud no encontrado"));
+    }
+
+    // Método para crear una solicitud
+    public Solicitud createSolicitud(Solicitud solicitud){
+        return solicitudRepository.save(solicitud);
     }
 
     // Actualizar una solicitud
