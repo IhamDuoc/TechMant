@@ -1,5 +1,7 @@
 package com.TechMant.privilegios.controller;
 
+
+import com.TechMant.privilegios.client.RolServiceClient;
 import com.TechMant.privilegios.model.Privilegios;
 import com.TechMant.privilegios.service.PrivilegiosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ public class PrivilegiosController {
 
     @Autowired
     private PrivilegiosService privilegiosService;
+
+    @Autowired
+    private RolServiceClient rolServiceClient;
 
     @GetMapping
     public ResponseEntity<List<Privilegios>> getAll() {
