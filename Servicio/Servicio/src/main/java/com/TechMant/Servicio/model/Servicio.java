@@ -21,18 +21,18 @@ public class Servicio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idServicio;
     
-    @Column(name = "nombre_servicio")
+    @Column(name = "nombre_servicio", nullable = false)
     private String nombreServicio;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", nullable = false)
     private String descripcion;
 
-    @Column(name = "precio")
+    @Column(name = "precio", nullable = false)
     private float precio;
 
     //llaves foraneas 
-    @Column (name = "id_categoria")
+    @Column (name = "Categoria_id_categoria")
     private Long idCategoria; 
 
-
+ 
 }
