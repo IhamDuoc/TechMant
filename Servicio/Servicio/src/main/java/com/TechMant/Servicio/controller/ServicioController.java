@@ -50,7 +50,7 @@ public class ServicioController {
 
     //Endpoint para crear un servicio nuevo 
     @PostMapping
-    public ResponseEntity<Servicio> agregarServico(@RequestBody Servicio servicio) {
+    public ResponseEntity<Servicio> agregarServicio(@RequestBody Servicio servicio) {
         try {
             Servicio nuevoServicio = servicioService.agregarServicio(servicio);
             return ResponseEntity.ok(nuevoServicio);

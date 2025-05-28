@@ -21,7 +21,7 @@ public class ServicioService {
 
     //metodo para traer un servicio por su id :)
     public Servicio obtenerServicioPorId(Long id) {
-        return servicioRepository.findById(id).orElseThrow(() -> new RuntimeException("Lo sentimo servicio no disponible"));
+        return servicioRepository.findById(id).orElseThrow(() -> new RuntimeException("Lo sentimos no se logro encontrar el servicio con ID:" +id));
     }
 
     //metodo para agregar un servicio
