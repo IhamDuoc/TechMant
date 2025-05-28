@@ -3,8 +3,10 @@ package com.TechMant.privilegios.controller;
 
 import com.TechMant.privilegios.client.RolServiceClient;
 import com.TechMant.privilegios.model.Privilegios;
+import com.TechMant.privilegios.model.Rol;
 import com.TechMant.privilegios.service.PrivilegiosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,21 +37,27 @@ public class PrivilegiosController {
     }
 
     @PostMapping
-public ResponseEntity<Privilegios> create(@RequestBody Privilegios privilegio) {
-    try {
-        return ResponseEntity.ok(privilegiosService.createPrivilegio(privilegio));
-    } catch (IllegalArgumentException e) {
-        return ResponseEntity.badRequest().build();
+    public ResponseEntity<?> createPrivilegio(@RequestBody Privilegios privilegios) {
+        // Verificar que el rol asociado al privilegio existe
+        Rol rol = rolServiceClient.getRolById(privilegios.getIdRol());
+        if (rol == null) {
+            return ResponseEntity.badRequest().body("Error: El rol con ID " + privilegios.getIdRol() + " no existe");
+        }
+
+        // Crear el privilegio
+        Privilegios privilegioGuardado = privilegiosService.createPrivilegio(privilegios);
+        return ResponseEntity.status(HttpStatus.CREATED).body(privilegioGuardado);
     }
-}
-@PutMapping("/{id}")
-public ResponseEntity<Privilegios> updateTipoPrivilegio(
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Privilegios> updateTipoPrivilegio(
         @PathVariable Long id,
         @RequestBody Privilegios privilegioActualizado) {
     
     Privilegios updated = privilegiosService.updateTipoPrivilegio(id, privilegioActualizado);
     return ResponseEntity.ok(updated);
-}
+    
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {

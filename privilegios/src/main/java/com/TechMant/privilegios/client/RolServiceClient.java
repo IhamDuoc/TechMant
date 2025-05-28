@@ -2,7 +2,6 @@ package com.TechMant.privilegios.client;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import com.TechMant.privilegios.model.Rol;
