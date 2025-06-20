@@ -54,15 +54,30 @@ public class UsuarioController {
         return ResponseEntity.ok(usuario);
     }
 
+    // ENDPOINT para traer a los usuarios por rol
+    @GetMapping("/rol/{id}")
+    public ResponseEntity<List<Usuario>> getAllUsuariosByRol(@PathVariable Integer id){
+        List<Usuario> usuarios = usuarioService.getAllUsuariosByRol(id);
+        if(usuarios.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(usuarios);
+    }
+
     // ENDPOINT para crear un nuevo usuario
     @PostMapping
-    public ResponseEntity<?> createUsuario(@RequestBody Usuario usuario) {
-        Rol rol = rolServiceClient.getRolById(usuario.getIdRol());
-        if (rol == null) {
-            return ResponseEntity.badRequest().body("Error: El rol con ID " + usuario.getIdRol() + " no existe");
+    public ResponseEntity<?> createUsuario(@RequestBody Usuario usuario, @RequestParam Integer idRolSolicitante) {
+        // Validar si quien intenta crear el usuario tiene idRol = 1
+        if(idRolSolicitante != 1){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("No tienes permisos para crear usuarios");
         }
-        Usuario usuarioGuardado = usuarioService.createUsuario(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioGuardado);
+        RolDTO rol = rolServiceClient.getRolById(usuario.getIdRol());
+        if(rol == null){
+            return ResponseEntity.badRequest().body("Error: el rol con ID "+usuario.getIdRol() + " no existe");
+
+        }
+        usuarioService.createUsuario(usuario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
     }
 
 
