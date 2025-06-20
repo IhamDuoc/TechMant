@@ -14,6 +14,9 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     // Método para traer a todos los usuarios
     public List<Usuario> getAllUsuarios() {
         return usuarioRepository.findAll();
@@ -22,6 +25,10 @@ public class UsuarioService {
     // Método para traer a un usuario por su ID
     public Usuario getUsuarioById(Long id) {
         return usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    }
+
+    public List<Usuario> getAllUsuariosByRol(Integer idRol){
+        return usuarioRepository.findByIdRol(idRol);
     }
 
     // Método para crear un nuevo usuario

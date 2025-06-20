@@ -2,6 +2,8 @@ package com.TechMantSPA.resenas.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.*;
@@ -24,7 +26,7 @@ public class Resenas {
     private Long idResena;
     
     @Column(name = "fecha_resena", nullable = false)
-    @JsonFormat(pattern="dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date fechaResena;
     
     @Column(name = "comentario", nullable = false)
