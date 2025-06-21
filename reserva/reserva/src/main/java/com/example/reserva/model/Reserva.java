@@ -1,6 +1,6 @@
 package com.example.reserva.model;
 
-import org.hibernate.annotations.Check;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
@@ -11,6 +11,9 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+
+
 @Entity
 @Table(name = "Reserva")
 @Data
@@ -28,6 +31,8 @@ public class Reserva {
     @Column(nullable = false)
     private String comentario;
     
+    
     @Column(nullable = false)
-    private Integer calificacion;
+    
+    private int calificacion;
 }
