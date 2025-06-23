@@ -75,8 +75,8 @@ public class AgendamientoController {
     }
 
 
-    //Endpoint para actualizar una agenda mediente su ID (Si es que se necesita):)
-    
+
+    //Endpoint para actualizar una agenda mediente su ID (Si es que se necesita):)    
     @PutMapping("{id}")
     public ResponseEntity <Agendamiento> actualizarAgendamiento(@PathVariable Long id, @RequestBody Agendamiento agenda) {
         try {

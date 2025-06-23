@@ -31,7 +31,7 @@ public class SolicitudServices {
     // Actualizar una solicitud
     public Solicitud actualizarSolicitud(Long id, Solicitud solicitudActualizada) {
         if (solicitudRepository.existsById(id)) {
-            solicitudActualizada.setId(id);
+            solicitudActualizada.setIdSolicitud(id);
             return solicitudRepository.save(solicitudActualizada);
         }
         return null; 

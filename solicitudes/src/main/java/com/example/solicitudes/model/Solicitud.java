@@ -21,7 +21,7 @@ public class Solicitud {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Asegúrate de definir un identificador
+    private Long idSolicitud; // Asegúrate de definir un identificador
     
     @Column(nullable = false)
     private Date fecha_solicitud; //DD/MM/AAAA
